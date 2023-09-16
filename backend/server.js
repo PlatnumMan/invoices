@@ -2,6 +2,7 @@ import chalk from "chalk";
 import cookieParser from "cookie-parser";
 import "dotenv/config";
 import express from "express";
+import mongoSanitize from "express-mongo-sanitize";
 import morgan from "morgan";
 import connectionToDB from "./config/connectDB.js";
 
@@ -14,8 +15,12 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.use(express.json());
+
 app.use(express.urlencoded({ extended: false }));
+
 app.use(cookieParser());
+
+app.use(mongoSanitize());
 
 app.get("/api/v1/test", (req, res) => {
   res.json({

@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema(
       validate: [validator.isAlphanumeric, "Invalid first name"],
     },
 
-    lasttName: {
+    lastName: {
       type: String,
       required: true,
       trim: true,
